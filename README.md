@@ -51,6 +51,8 @@ axes[1].set_title('Filtered data')
 
 ## Parameters
 
+If you provide just data, the other parameters go by default. Here the full parameter list:
+
 - **data** (array-like, shape `(n_traces, n_samples)`): Seismic data array. Required.
 - **time_values** (array-like, shape `(n_samples,)`, optional): Time samples. If `None`, uses `np.arange(n_samples)`. Default: `None`.
 - **trace_values** (array-like, shape `(n_traces,)`, optional): Trace coordinates (e.g., offsets, CDP numbers). If `None`, uses `np.arange(n_traces)`. Default: `None`.

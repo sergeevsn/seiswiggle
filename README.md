@@ -28,6 +28,7 @@ pip install -r requirements.txt
 from seiswiggle import wiggle_plot
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.ndimage import median_filter
 
 import segyio # to load data from SEG-Y
 
@@ -38,7 +39,7 @@ data = np.random.randn(30, 500)
 with segyio.open('your_file.sgy', ignore_geometry=True) as f:
     data = f.trace.raw[:]
 
-data_filtered = np.median(data, (5, 5))
+data_filtered = median_filter(data, size=(5, 5))
 
 # Option 1. Simple call
 fig, ax = wiggle_plot(data)

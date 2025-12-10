@@ -38,6 +38,8 @@ data = np.random.randn(30, 500)
 with segyio.open('your_file.sgy', ignore_geometry=True) as f:
     data = f.trace.raw[:]
 
+data_filtered = np.median(data, (5, 5))
+
 # Option 1. Simple call
 fig, ax = wiggle_plot(data)
 

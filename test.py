@@ -131,7 +131,7 @@ def test_wiggle_plot_synthetic():
     assert auto_path.exists()
 
     # Option in provided subplot grid
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
     fig.suptitle("Wiggle plots inside Pyplot Subplots")
     dt = time[1] - time[0]  # time step
     filtered = _zero_phase_bandpass(data, dt=dt, lowcut=12.0, highcut=40.0)
@@ -145,6 +145,8 @@ def test_wiggle_plot_synthetic():
     axes[1].set_title("Filtered")
     axes[2].set_title("Residual")
     axes[0].set_ylabel("Time (s)")
+    axes[1].set_ylabel("Time (s)")
+    axes[2].set_ylabel("Time (s)")
     axes[0].set_xlabel("Offset (m)")
     axes[1].set_xlabel("Offset (m)")
     axes[2].set_xlabel("Offset (m)")

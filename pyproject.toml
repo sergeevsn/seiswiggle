@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seiswiggle"
+version = "0.1.0"
+description = "Wiggle plot function for seismic data. Universal and pyplot-compatible."
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "numpy>=1.20.0",
+    "matplotlib>=3.3.0",
+    "scipy>=1.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools]
+packages = ["seiswiggle"]
+package-dir = {"" = "."}
+

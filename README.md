@@ -7,11 +7,11 @@ Wiggle plot function for seismic data. Universal and pyplot-compatible.
 ### Install from local directory
 
 ```bash
+# Regular installation
+pip install .
+
 # Install in editable mode (recommended for development)
 pip install -e .
-
-# Or regular installation
-pip install .
 ```
 
 ### Install dependencies separately

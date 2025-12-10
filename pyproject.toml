@@ -21,5 +21,4 @@ dev = [
 
 [tool.setuptools]
 packages = ["seiswiggle"]
-package-dir = {"" = "."}
 

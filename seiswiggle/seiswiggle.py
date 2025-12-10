@@ -135,6 +135,16 @@ def wiggle_plot(
         if time_grid:
             axis.grid(True, axis='x', alpha=0.5)
 
+    # Move horizontal axis ticks and labels to the top
+    axis.xaxis.tick_top()
+    axis.xaxis.set_label_position('top')
+    # Increase padding for axis label to create gap between x_label and title
+    axis.xaxis.labelpad = 10
+
+    # Adjust figure layout if axis was created to provide more space at the top
+    if created_axis:
+        fig.subplots_adjust(top=0.92)
+
     # -----------------------------------------
     # Return
     # -----------------------------------------

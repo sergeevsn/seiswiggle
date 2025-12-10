@@ -45,7 +45,7 @@ data_filtered = median_filter(data, size=(5, 5))
 fig, ax = wiggle_plot(data)
 
 # Option 2. Call with subplots
-fig, axes = plt.subplots(1, 2, figsize=(10, 10))
+fig, axes = plt.subplots(1, 2, figsize=(10, 10), tight_layout=True)
 wiggle_plot(data, axis=axes[0])
 axes[0].set_title('Original data')
 wiggle_plot(data_filtered, axis=axes[1])

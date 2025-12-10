@@ -105,11 +105,12 @@ def test_wiggle_plot_synthetic():
     ax_auto.set_xlabel("Offset (m)")
     auto_path = pics_dir / "solo_auto.png"
     fig_auto.savefig(auto_path, dpi=150, bbox_inches='tight')
+    plt.close(fig_auto)
     assert auto_path.exists()
 
     # Option with automatic figure/axis creation. Horizontal time axis.
     # Brown fill color.
-    fig_auto, ax_auto = wiggle_plot(
+    fig_horizontal, ax_horizontal = wiggle_plot(
         data,
         time_values=time,
         trace_values=offsets,
@@ -119,19 +120,20 @@ def test_wiggle_plot_synthetic():
         fill_color="brown"    
     )    
 
-    assert fig_auto is not None
+    assert fig_horizontal is not None
     assert ax_auto is not None  
 
     ax_auto.set_title("Solo Wiggle Plot. Horizontal time (VSP-style). Fill color: brown. Gain: 2.0")
     ax_auto.set_ylabel("Offset (m)")
     ax_auto.set_xlabel("Time (s)")
-    auto_path = pics_dir / "solo_horizontal.png"
-    fig_auto.savefig(auto_path, dpi=150, bbox_inches='tight')
+    horizontal_path = pics_dir / "solo_horizontal.png"
+    fig_horizontal.savefig(horizontal_path, dpi=150, bbox_inches='tight')
+    plt.close(fig_horizontal)
 
-    assert auto_path.exists()
+    assert horizontal_path.exists()
 
     # Option in provided subplot grid
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+    fig, axes = plt.subplots(1, 3, figsize=(15, 10), tight_layout=True)
     fig.suptitle("Wiggle plots inside Pyplot Subplots")
     dt = time[1] - time[0]  # time step
     filtered = _zero_phase_bandpass(data, dt=dt, lowcut=12.0, highcut=40.0)
@@ -141,9 +143,9 @@ def test_wiggle_plot_synthetic():
     wiggle_plot(filtered, time_values=time, trace_values=offsets, axis=axes[1], gain=1.0)
     wiggle_plot(residual, time_values=time, trace_values=offsets, axis=axes[2], gain=1.0)
 
-    axes[0].set_title("Original")
-    axes[1].set_title("Filtered")
-    axes[2].set_title("Residual")
+    axes[0].set_title("Original", pad=20)
+    axes[1].set_title("Filtered", pad=20)
+    axes[2].set_title("Residual", pad=20)
     axes[0].set_ylabel("Time (s)")
     axes[1].set_ylabel("Time (s)")
     axes[2].set_ylabel("Time (s)")
@@ -161,7 +163,7 @@ def test_wiggle_plot_synthetic():
     print(f"Saved: {auto_path}")
     print(f"Saved: {grid_path}")
 
-    plt.close(fig_auto)
+    
     plt.close(fig)
 
 

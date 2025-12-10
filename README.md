@@ -29,8 +29,14 @@ from seiswiggle import wiggle_plot
 import numpy as np
 import matplotlib.pyplot as plt
 
+import segyio # to load data from SEG-Y
+
 # Your data of shape (n_traces, n_samples)
 data = np.random.randn(30, 500)
+
+# of load from SEG-Y
+with segyio.open('your_file.sgy', ignore_geometry=True) as f:
+    data = f.trace.raw[:]
 
 # Option 1. Simple call
 fig, ax = wiggle_plot(data)
